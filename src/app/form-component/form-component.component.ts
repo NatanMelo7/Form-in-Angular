@@ -10,6 +10,7 @@ export class FormComponentComponent {
   _email: string = "";
   _msg: string = "";
   _check_status: boolean = false;
+  _disabledBtn: boolean = true;
 
   // constructor(name: string, email: string, msg: string){
   //   this._name = name;
@@ -19,14 +20,26 @@ export class FormComponentComponent {
 
   onUpdateName(event: Event){
     this._name = (<HTMLInputElement>event.target).value;
+    this.getCheckFormData();
   }
 
   onUpdateEmail(event: Event){
     this._email = (<HTMLInputElement>event.target).value;
+    this.getCheckFormData();
   }
 
   onUpdateMsg(event: Event){
     this._msg = (<HTMLInputElement>event.target).value;
+    this.getCheckFormData();
+  }
+
+  getCheckFormData(){
+    if (this._name != "" && this._email != "" && this._msg != ""){
+      return this._disabledBtn = false;
+    }
+    else {
+      return true;
+    }
   }
 
   setCheckStatus(status: boolean){
@@ -51,6 +64,12 @@ export class FormComponentComponent {
 
   getDataForm(){
     this.setCheckStatus(true);
+  }
+
+  resetDataForm(){
+    this._name = "";
+    this._email = "";
+    this._msg = "";
   }
 
   toString(){
