@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Formulário HTML</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .form-container {
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button[class="submit"] {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button[class="submit"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <h1>Formulário de Contato</h1>
+  <div class="form-container">
+    <!-- <form> -->
+      <div class="form-group">
+        <label for="name">Nome:</label>
+        <input (input)="onUpdateName($event)" type="text" id="name" name="name" placeholder="Digite seu nome">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input (input)="onUpdateEmail($event)" type="email" id="email" name="email" placeholder="Digite seu email">
+      </div>
+      <div class="form-group">
+        <label for="message">Mensagem:</label>
+        <textarea (input)="onUpdateMsg($event)" id="message" name="message" placeholder="Digite sua mensagem"></textarea>
+      </div>
+      <div class="form-group">
+        <button (click)="getDataForm()" class="submit">Enviar</button>
+      </div>
+    <!-- </form> -->
+    <h1 [hidden]="!getCheckStatus()">Dados Coletados</h1>
+    <div>
+        <p [hidden]="!getCheckStatus()" [innerText]="toString()"></p>
+    </div>
+  </div>
+</body>
+</html>
